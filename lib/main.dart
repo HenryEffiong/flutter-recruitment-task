@@ -1,8 +1,10 @@
+import 'package:filmguru/feature/movies_list/binding/movies_list_binding.dart';
 import 'package:filmguru/feature/movies_list/movies_list_screen.dart';
 import 'package:filmguru/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 
 import 'data/api/movies_service_local.dart';
 import 'generated/l10n.dart';
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider(
       create: (context) => MoviesRepository(MoviesServiceLocal()),
-      child: MaterialApp(
+      child: GetMaterialApp(
+        initialBinding: MoviesListBinding(),
         title: 'Filmguru',
         theme: AppTheme.theme,
         home: MoviesListScreen(),
